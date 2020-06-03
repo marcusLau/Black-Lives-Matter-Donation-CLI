@@ -1,22 +1,21 @@
 class Donate::CLI
 
     def call
-        
+        Donate::Scraper.new.start
         list_funds
         menu
         goodbye
     end
 
     def list_funds 
-        puts "Where to Donate"
-        puts <<-DOC.gsub /^\s*/, '' # trims white space 
-        1. Minnesota Freedom Fund
-        2. American Civil Liberties Union (ACLU)
-        3. Brooklyn Bail Fund
-        4. Black Visions Collective 
-        5. George Floyd GoFundMe
-        DOC
+        @foundations = Donate::Foundation.list
     end
+
+    """
+    def get_url
+        @url = Donate::Scraper.get_page
+    end
+    """
 
     def menu
         input = nil
@@ -28,6 +27,10 @@ class Donate::CLI
                 puts "info 1 here"
             when "list"
                 list_funds
+            when "url"
+                Donate::Scraper.new.start
+            else 
+                puts "Enter number 1-5, list, or exit: "
             end
         end
     end

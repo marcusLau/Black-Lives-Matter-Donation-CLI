@@ -1,0 +1,23 @@
+PATH
+  remote: .
+  specs:
+    donate (0.1.0)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    mini_portile2 (2.4.0)
+    nokogiri (1.10.9)
+      mini_portile2 (~> 2.4.0)
+    rake (12.3.3)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  donate!
+  nokogiri
+  rake (~> 12.0)
+
+BUNDLED WITH
+   2.1.4
