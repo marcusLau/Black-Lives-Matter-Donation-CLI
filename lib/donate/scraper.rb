@@ -4,11 +4,8 @@ require 'open-uri'
 
 class Donate::Scraper 
 
-    attr_accessor :foundations
-
     # scrape all Foundation obj parameters in this one method
     def start
-        @foundations = []
         get_minnesota_page
         # get_aclu_page
         # get_brooklyn_page
@@ -33,7 +30,7 @@ class Donate::Scraper
         # donate[5] is contact
         # cloned_contact = cloned_donate
 
-        @foundations << fund
+        Donate::Foundation.save(fund) # Saves all funds into the class array here
         binding.pry
     end
 

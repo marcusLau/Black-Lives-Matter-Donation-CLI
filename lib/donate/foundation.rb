@@ -4,7 +4,8 @@ class Donate::Foundation
 
     attr_accessor :name, :mission, :url, :donate
 
-    # Returns an array of Foundation instances 
+    @@all = []
+
     def self.list 
         puts "Where to Donate"
         puts <<-DOC.gsub /^\s*/, '' # trims white space 
@@ -14,13 +15,14 @@ class Donate::Foundation
         4. Black Visions Collective 
         5. George Floyd GoFundMe
         DOC
-        foundation_1 = self.new 
-        foundation_1.name = "Minnesota Freedom Fund"
-        foundation_1.mission = "Mission"
-        foundation_1.url = "url"
+    end
 
-        foundation_1
-        # binding.pry #  so foundation_1 is accessible and has the correct parameters
+    def self.all
+        @@all
+    end
+
+    def self.save(fund)
+        @@all << fund
     end
 
 end

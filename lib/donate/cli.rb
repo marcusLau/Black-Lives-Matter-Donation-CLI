@@ -1,20 +1,17 @@
+require 'pry' 
+
 class Donate::CLI
 
     def call
+        Donate::Scraper.new.start # scrapes all data at start
         list_funds
         menu
         goodbye
     end
 
     def list_funds 
-        @foundations = Donate::Foundation.list
+        Donate::Foundation.list
     end
-
-    """
-    def get_url
-        @url = Donate::Scraper.get_page
-    end
-    """
 
     def menu
         input = nil
@@ -27,11 +24,12 @@ class Donate::CLI
             when "list"
                 list_funds
             when "url"
-                Donate::Scraper.new.start
+                # Donate::Scraper.new.start
             else 
                 puts "Enter number 1-5, list, or exit: "
             end
         end
+        # binding.pry
     end
 
     def goodbye
