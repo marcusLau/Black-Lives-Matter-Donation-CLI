@@ -2,8 +2,7 @@ require 'pry'
 
 class Donate::Foundation
 
-    attr_accessor :name, :mission, :url
-
+    attr_accessor :name, :mission, :url, :donate
 
     # Returns an array of Foundation instances 
     def self.list 

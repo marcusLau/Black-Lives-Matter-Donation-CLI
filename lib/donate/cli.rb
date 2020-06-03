@@ -1,7 +1,6 @@
 class Donate::CLI
 
     def call
-        Donate::Scraper.new.start
         list_funds
         menu
         goodbye
@@ -24,7 +23,7 @@ class Donate::CLI
             input = gets.strip.downcase
             case input 
             when "1"
-                puts "info 1 here"
+                puts "info 1 here" # will post info from Foundation scraped from scrapper class here.
             when "list"
                 list_funds
             when "url"
