@@ -12,26 +12,23 @@ class Donate::Scraper
         # get_visions_page
         # get_blm_page
     end
-
-    # TODO: Need to scrape all info for Foundation obj data. 
+ 
     def get_minnesota_page
         doc = Nokogiri::HTML(open("https://minnesotafreedomfund.org/"))
 
         fund = Donate::Foundation.new
         fund.name = doc.css("div.wrapper").text.delete!("\n").strip # removes new lines and white spaces
         fund.mission = doc.css("div.image-subtitle-wrapper").text
-        fund.url = doc.search("meta[property='og:url']").map {|n| n['content']}
+        fund.url = doc.search("meta[property='og:url']").map {|n| n['content']}[0]
+        fund.desc = doc.search("meta[property='og:description']").map {|n| n['content']}[0]
 
         url_list = doc.css("div.collection")
-        cloned_fund = Marshal.load(Marshal.dump(fund))
-        fund.donate = cloned_fund.url[0].concat(url_list[6].children[1].attributes['href'].value)
+        cloned_fund = Marshal.load(Marshal.dump(fund)) # Ruby objects pointing to the same obj?
+        fund.contact = cloned_fund.url + (url_list[5].children[1].attributes['href'].value)
+        fund.donate = cloned_fund.url + (url_list[6].children[1].attributes['href'].value)
 
-        # fund.contact = cloned_contact.url[0].concat(url_list[5].children[1].attributes['href'].value)
-        # donate[5] is contact
-        # cloned_contact = cloned_donate
-
-        Donate::Foundation.save(fund) # Saves all funds into the class array here
-        binding.pry
+        Donate::Foundation.save(fund)
+        # binding.pry
     end
 
 
