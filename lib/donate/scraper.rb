@@ -7,7 +7,7 @@ class Donate::Scraper
     # scrape all Foundation obj parameters in this one method
     def start
         get_minnesota_page
-        # get_aclu_page
+        get_aclu_page
         # get_brooklyn_page
         # get_visions_page
         # get_blm_page
@@ -29,6 +29,21 @@ class Donate::Scraper
 
         Donate::Foundation.save(fund)
         # binding.pry
+    end
+
+    def get_aclu_page
+        doc = Nokogiri::HTML(open("https://aclu.org/"))
+
+        aclu = Donate::Foundation.new
+        aclu.name = doc.css("meta[property='og:title']").map {|n| n['content']}[0]
+        aclu.mission = doc.css("meta[name='og:description']").map {|n| n['content']}[0]
+        aclu.desc = doc.css("div.container p")[8].children.text
+        aclu.url = doc.css("meta[property='og:url']").map {|n| n['content']}[0]
+        aclu.donate = doc.css("div.acluvl a")[0].attributes['href'].value
+        aclu.contact = doc.css("ul.branded-footer-links")[0].children[0].children[0].attributes['href'].value
+
+        Donate::Foundation.save(aclu)
+        binding.pry
     end
 
 
