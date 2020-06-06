@@ -10,13 +10,9 @@ class Donate::Foundation
         puts ""
         puts "----------- List of Funds -----------"
         puts ""
-        puts <<-DOC.gsub /^\s*/, '' # trims white space 
-        1. #{@@all[0].name}
-        2. American Civil Liberties Union (ACLU)
-        3. Brooklyn Bail Fund
-        4. Black Visions Collective 
-        5. Black Lives Matter
-        DOC
+        @@all.each_with_index do |fund, i|
+            puts "#{i+1}. #{fund.name}"
+        end       
     end
 
     def self.all

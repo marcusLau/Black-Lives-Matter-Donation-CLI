@@ -4,16 +4,17 @@ require 'open-uri'
 
 class Donate::Scraper 
 
-    # scrape all Foundation obj parameters in this one method
+    # Data scrape all pages at start of CLI.
     def start
         get_minnesota_page
         get_aclu_page
         get_brooklyn_page
         get_visions_page
-        # get_blm_page
+        get_blm_page
     end
  
     def get_minnesota_page
+        puts "Minnnesota"
         doc = Nokogiri::HTML(open("https://minnesotafreedomfund.org/"))
 
         fund = Donate::Foundation.new
@@ -32,6 +33,7 @@ class Donate::Scraper
     end
 
     def get_aclu_page
+        puts "aclu"
         doc = Nokogiri::HTML(open("https://aclu.org/"))
 
         aclu = Donate::Foundation.new
@@ -47,6 +49,7 @@ class Donate::Scraper
     end
 
     def get_brooklyn_page
+        puts "brook"
         doc = Nokogiri::HTML(open("https://brooklynbailfund.org/"))
         mission_doc = Nokogiri::HTML(open("https://brooklynbailfund.org/about-us"))
 
@@ -66,6 +69,7 @@ class Donate::Scraper
     end
 
     def get_visions_page 
+        puts "visions"
         doc = Nokogiri::HTML(open("https://www.blackvisionsmn.org/"))
 
         visions = Donate::Foundation.new
@@ -79,5 +83,22 @@ class Donate::Scraper
         Donate::Foundation.save(visions)
         # binding.pry
     end
+    
+    def get_blm_page
+        puts "blm"
+        doc = Nokogiri::HTML(open("https://blacklivesmatter.com/about/"))
+        mission_doc = Nokogiri::HTML(open("https://blacklivesmatter.com/what-we-believe/"))
 
+        blm = Donate::Foundation.new
+        blm.name = doc.css("meta[property='og:site_name']").map {|n| n['content']}[0]
+        blm.url = doc.css("meta[property='og:url']").map {|n| n['content']}[0]
+        blm.desc = doc.css("main.main p.lead")[0].text
+        blm.mission = mission_doc.css("main.main p.lead")[0].text
+        blm.donate = doc.css(
+            "ul#menu-primary-menu li.menu-highlight.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-2813.nav-item")[0].children[0].attributes['href'].value
+        blm.contact = doc.css("li.nav-item.menu-item.menu-contact a")[0].attributes['href'].value
+
+        Donate::Foundation.save(blm)
+        # binding.pry 
+    end
 end

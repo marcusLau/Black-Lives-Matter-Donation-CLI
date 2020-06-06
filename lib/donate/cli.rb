@@ -4,7 +4,7 @@ class Donate::CLI
 
     attr_accessor :done
 
-    def call
+    def start
         @done = false
         puts ""
         puts "George Floyd: Help, Donate, and Learn"
