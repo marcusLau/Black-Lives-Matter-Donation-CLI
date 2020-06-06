@@ -14,7 +14,6 @@ class Donate::Scraper
     end
  
     def get_minnesota_page
-        puts "Minnnesota"
         doc = Nokogiri::HTML(open("https://minnesotafreedomfund.org/"))
 
         fund = Donate::Foundation.new
@@ -33,7 +32,6 @@ class Donate::Scraper
     end
 
     def get_aclu_page
-        puts "aclu"
         doc = Nokogiri::HTML(open("https://aclu.org/"))
 
         aclu = Donate::Foundation.new
@@ -49,7 +47,6 @@ class Donate::Scraper
     end
 
     def get_brooklyn_page
-        puts "brook"
         doc = Nokogiri::HTML(open("https://brooklynbailfund.org/"))
         mission_doc = Nokogiri::HTML(open("https://brooklynbailfund.org/about-us"))
 
@@ -69,7 +66,6 @@ class Donate::Scraper
     end
 
     def get_visions_page 
-        puts "visions"
         doc = Nokogiri::HTML(open("https://www.blackvisionsmn.org/"))
 
         visions = Donate::Foundation.new
@@ -85,7 +81,6 @@ class Donate::Scraper
     end
     
     def get_blm_page
-        puts "blm"
         doc = Nokogiri::HTML(open("https://blacklivesmatter.com/about/"))
         mission_doc = Nokogiri::HTML(open("https://blacklivesmatter.com/what-we-believe/"))
 

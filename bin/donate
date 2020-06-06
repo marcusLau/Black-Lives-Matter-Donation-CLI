@@ -3,4 +3,4 @@
 require './lib/donate'
 # require "bundler/setup"
 
-Donate::CLI.new.start
+Donate::CLI.new.call
