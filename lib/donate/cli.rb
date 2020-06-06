@@ -46,18 +46,23 @@ class Donate::CLI
                 @done = true
                 terminate
             when 'help'
-                puts ""
-                puts "--------------- Help ----------------"
-                puts ""
-                puts "-> Enter 'list' to list all funds. "
-                puts "-> Enter 'exit' to exit the CLI."
-                puts ""
+                help
             else 
                 puts ""
                 puts "-> Invalid input. Please enter in a valid input."
             end
         end
         # binding.pry
+    end
+
+    def help 
+        puts ""
+        puts "--------------- Help ----------------"
+        puts ""
+        puts "-> Enter 'list' to list all funds. "
+        puts "-> Enter 'exit' to exit the CLI."
+        puts "-> Enter 'menu' to display the menu."
+        puts ""
     end
 
     def process_input(input)
