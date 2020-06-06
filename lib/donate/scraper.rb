@@ -9,7 +9,7 @@ class Donate::Scraper
         get_minnesota_page
         get_aclu_page
         get_brooklyn_page
-        # get_visions_page
+        get_visions_page
         # get_blm_page
     end
  
@@ -64,5 +64,20 @@ class Donate::Scraper
         Donate::Foundation.save(bail)
         # binding.pry 
     end
-    
+
+    def get_visions_page 
+        doc = Nokogiri::HTML(open("https://www.blackvisionsmn.org/"))
+
+        visions = Donate::Foundation.new
+        visions.name = doc.css("meta[property='og:title']").map {|n| n['content']}[0]
+        visions.url = doc.css("meta[property='og:url']").map {|n| n['content']}[0]
+        visions.desc = doc.css("div.sqs-block-content p")[0].text
+        visions.mission = doc.css("div.sqs-block-content p")[1].text
+        visions.donate = doc.css("div.sqs-block-button-container--center a")[0].attributes['href'].value
+        visions.contact = doc.css("div#block-yui_3_17_2_1_1555818226558_3757 p")[0].children[1].attributes['href'].value
+
+        Donate::Foundation.save(visions)
+        # binding.pry
+    end
+
 end
