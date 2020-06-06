@@ -4,19 +4,19 @@ This Ruby Gem provides a CLI to learn more about foundations and funds in suppor
 
 ## Installation
 
-1. Open the IDE of your preference
+Open the IDE of your preference
 
-2. Git Clone this Repo 
+Git Clone this Repo 
 
     $ git clone https://github.com/marcusLau/donation.git
 
-3. Enter this line into your terminal:
+Enter this line into your terminal:
 
     $ bundle install
 
 ## Usage
 
-1. Run CLI by entering: 
+Run CLI by entering: 
 
     $ ./bin/donate
 
