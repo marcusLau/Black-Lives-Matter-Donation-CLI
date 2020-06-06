@@ -1,28 +1,24 @@
-# Donate
+# George Floyd: Central Donation CLI
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/donate`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This Ruby Gem provides a CLI to learn more about foundations and funds in support of George Floyd and the #BlackLivesMatter movement. 
 
 ## Installation
 
-Add this line to your application's Gemfile:
+1. Open the IDE of your preference
 
-```ruby
-gem 'donate'
-```
+2. Git Clone this Repo 
 
-And then execute:
+    $ git clone https://github.com/marcusLau/donation.git
+
+3. Enter this line into your terminal:
 
     $ bundle install
 
-Or install it yourself as:
-
-    $ gem install donate
-
 ## Usage
 
-TODO: Write usage instructions here
+1. Run CLI by entering: 
+
+    $ ./bin/donate
 
 ## Development
 
@@ -32,13 +28,10 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/donate. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/donate/blob/master/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/[marcusLau]/donate. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[marcusLau]/donate/blob/master/CODE_OF_CONDUCT.md).
 
 
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
 
-## Code of Conduct
-
-Everyone interacting in the Donate project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/donate/blob/master/CODE_OF_CONDUCT.md).

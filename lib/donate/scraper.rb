@@ -26,7 +26,7 @@ class Donate::Scraper
         cloned_fund = Marshal.load(Marshal.dump(fund)) # Ruby objects pointing to the same obj?
         fund.contact = cloned_fund.url + (url_list[5].children[1].attributes['href'].value)
         fund.donate = cloned_fund.url + (url_list[6].children[1].attributes['href'].value)
-
+        
         Donate::Foundation.save(fund)
         # binding.pry
     end

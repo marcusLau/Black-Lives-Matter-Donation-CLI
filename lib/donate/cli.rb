@@ -7,7 +7,7 @@ class Donate::CLI
     def call
         @done = false
         puts ""
-        puts "George Floyd: Help, Donate, and Learn"
+        puts "---------- George Floyd: Central Donation CLI ----------"
         start
         list_funds
         menu
@@ -31,7 +31,6 @@ class Donate::CLI
         puts "-> Enter 'menu' to display the menu."
         puts "-> Enter 'help' to display commands."
         while !done
-
             puts "-> Please enter a command or the number of the fund you'd like to get more info on: "
             input = gets.strip.downcase
             if input.to_i.between?(1, 5) 
