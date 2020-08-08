@@ -8,7 +8,7 @@ Open the IDE of your preference
 
 Git Clone this Repo 
 
-    $ git clone https://github.com/marcusLau/donation.git
+    $ git clone https://github.com/marcusLau/Black-Lives-Matter-Donation-CLI.git
 
 Enter this line into your terminal:
 
