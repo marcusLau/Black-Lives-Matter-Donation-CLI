@@ -1,4 +1,4 @@
-# George Floyd: Central Donation CLI
+# Black Lives Matter: Donation CLI
 
 This Ruby Gem provides a CLI to learn more about foundations and funds in support of George Floyd and the #BlackLivesMatter movement. 
 
